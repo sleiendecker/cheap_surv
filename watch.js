@@ -11,6 +11,7 @@ function base64Encode(file) {
 }
 
 module.exports = function(dir, cb) {
+  console.log(`Watching dir: ${dir}`);
   let watcher = chokidar.watch(dir, {
     ignored: /[\/\\]\./,
     persistent: true

@@ -4,6 +4,6 @@ const dir        = path.join(__dirname, 'images');
 
 runWatcher(dir, function(err, res){
   if (!err) {
-    console.log(`Success: ${JSON.stringify(res)}`);
+    console.log(`Success: ${res}`);
   }
 })
