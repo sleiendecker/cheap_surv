@@ -7,9 +7,7 @@ Make sure brew is up to date by running brew update and make sure node and npm a
 ```
 brew update
 brew install node
-brew install mongodb
 brew upgrade node
-brew upgrade mongodb
 ```
 #Global NPM Packages
 Install required global packages using the following.
