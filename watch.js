@@ -1,8 +1,12 @@
 const fs        = require('fs');
 const chokidar  = require('chokidar');
+const glob      = require('glob');
 const mailer    = require('./mailer');
 const validator = require('./validator')
 const mailOpts  = require('./config/mailOpts');
+
+const validExtensions = 'jpeg|jpg|png|bmp'
+
 
 
 function base64Encode(file) {
@@ -17,14 +21,18 @@ module.exports = function(dir, cb) {
     persistent: true
   });
 
-  watcher
-    .on('add', (filePath) => {
-      if (validator(filePath)){
-        mailer(mailOpts, filePath, base64Encode(filePath), (err, res) => {
-          if (!err) {
-            cb(null, res);
-          }
-        });
+  watcher.on('add', (filePath) => {
+    glob(`${dir}/**/*(${validExtensions})`, (err, files) => {
+      if (!err) {
+        if (validator(filePath, validExtensions)){
+          mailer(mailOpts, filePath, base64Encode(filePath), (err, res) => {
+            if (!err) {
+              cb(null, res);
+            }
+          });
+        }
       }
-    })
+
+    });
+  });
 }

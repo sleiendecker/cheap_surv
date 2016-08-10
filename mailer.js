@@ -14,7 +14,9 @@ module.exports = function(mailOptions, fileName, encodedString, cb) {
     content: encodedString,
     encoding: 'base64'
   }]
-  console.log(`Sending file: ${fileName}`)
+
+  var n = fileName.lastIndexOf('/');
+  console.log(`\nMotion detected!\nSending: '${fileName.substring(n+1)}'`)
   // send mail with defined transport object
   transporter.sendMail(mailOptions, function(error, info){
     if(!error){

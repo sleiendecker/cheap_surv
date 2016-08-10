@@ -33,9 +33,8 @@ module.exports = {
 ##Mac
 Download and install [icamsource](https://itunes.apple.com/us/app/icam-webcam-video-streaming/id296273730?mt=8&uo=4&at=11lcfp "icamsource").
 
-Launch icamsource, enable motion detection, and set the motion events folder to `cheap_surv/images`
-
-In the app root, run the following command:
+Launch icamsource, enable motion detection, and set the motion events folder to `images`
+Run the following command in the app root:
 ```
 forever start --minUptime 1000 --spinSleepTime 100 index.js
 ```

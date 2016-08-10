@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "chokidar": "^1.6.0",
+    "glob": "^7.0.5",
     "moment": "^2.14.1",
     "nodemailer": "^2.5.0"
   }
