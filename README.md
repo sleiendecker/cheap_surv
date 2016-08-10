@@ -23,7 +23,7 @@ cd cheap_surv
 npm install
 ```
 #Instructions
-Add your gmail credentials to `cheap_surv`:
+Add your gmail credentials to `config/auth.js`:
 ```javascript
 module.exports = {
   email: 'USERNAME@gmail.com',
