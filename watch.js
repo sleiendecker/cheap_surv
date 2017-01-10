@@ -1,10 +1,10 @@
 const fs        = require('fs');
-const chokidar  = require('chokidar');
-const glob      = require('glob');
-const mailer    = require('./mailer');
-const mailOpts  = require('./config/mailOpts');
+chokidar        = require('chokidar'),
+glob            = require('glob'),
+mailer          = require('./mailer'),
+mailOpts        = require('./config/mailOpts'),
 
-const validExtensions = 'jpeg|jpg|png|bmp'
+validExtensions = 'jpeg|jpg|png|bmp'
 
 
 
@@ -13,7 +13,7 @@ function base64Encode(file) {
   return new Buffer(bitmap).toString('base64');
 }
 
-module.exports = function(dir, cb) {
+module.exports = (dir, cb) => {
   console.log(`Watching dir: ${dir}`);
   let watcher = chokidar.watch(dir, {
     ignored: /[\/\\]\./,

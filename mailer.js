@@ -1,13 +1,13 @@
-const nodemailer = require('nodemailer');
-const fs         = require('fs');
-const user       = require('./config/auth');
-const smtpConfig = require('./config/smtp');
+const nodemailer = require('nodemailer'),
+fs               = require('fs'),
+user             = require('./config/auth'),
+smtpConfig       = require('./config/smtp');
 
 
 // create reusable transporter object using the default SMTP transport
 let transporter = nodemailer.createTransport(smtpConfig);
 
-module.exports = function(mailOptions, fileName, encodedString, cb) {
+module.exports = (mailOptions, fileName, encodedString, cb) => {
   // modify mailOptions attachments property
   mailOptions.attachments =  [{
     filename: fileName,
@@ -18,7 +18,7 @@ module.exports = function(mailOptions, fileName, encodedString, cb) {
   var n = fileName.lastIndexOf('/');
   console.log(`\nMotion detected!\nSending: '${fileName.substring(n+1)}'`)
   // send mail with defined transport object
-  transporter.sendMail(mailOptions, function(error, info){
+  transporter.sendMail(mailOptions, (error, info) => {
     if(!error){
       cb(null, info.response);
     }
